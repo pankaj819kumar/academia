@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Route,
@@ -16,7 +17,7 @@ const PrivateRoute = ({ isLoggedin, children }) => {
 class App extends Component {
 
   render() {
-    const isLoggedin = false;
+    const { auth } = this.props;
     return (
       <Router>
           <div>
@@ -28,8 +29,7 @@ class App extends Component {
               <Route
                 path="/settings"
                 element={
-                  // <PrivateRoute isLoggedin={auth.isLoggedin}>
-                  <PrivateRoute isLoggedin={isLoggedin}>
+                  <PrivateRoute isLoggedin={auth.isLoggedin}>
                     <Settings />
                   </PrivateRoute>
                 }
@@ -42,4 +42,15 @@ class App extends Component {
   }
 }
 
-export default App;
+// specify the things we want to pass as props to App component
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+// App.propTypes = {
+//   posts: PropTypes.array.isRequired,
+// };
+
+export default connect(mapStateToProps)(App);

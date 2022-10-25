@@ -195,7 +195,7 @@ body {
   /* NAVBAR */
   .nav {
     display: flex;
-    background: #6200ee;
+    background: #8a2be2;
     padding: 10px 20px;
     align-items: center;
     justify-content: space-between;
@@ -209,14 +209,14 @@ body {
     color: #ece60e;
   }
   nav #user-dp {
-    height: 40px;
+    height: 30px;
   }
   nav .user {
     display: flex;
     align-items: center;
   }
   nav span {
-    margin-left: 10px;
+    margin-left: 14px;
   }
   nav .right-nav {
     display: flex;
@@ -253,11 +253,11 @@ body {
     background: #ffffff;
     border: 1px solid #d0d0d0;
     box-sizing: border-box;
-    border-radius: 3px;
+    border-radius: 21px;
     height: 40px;
     width: 100%;
     font-size: 16px;
-    padding-left: 31px;
+    padding-left: 40px;
     box-sizing: border-box;
     flex-grow: 1;
   }
@@ -268,7 +268,7 @@ body {
     height: 20px;
     position: absolute;
     top: 10px;
-    left: 7px;
+    left: 12px;
   }
   .search-results {
     background: #fff;
