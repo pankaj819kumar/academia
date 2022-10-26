@@ -411,7 +411,7 @@ body {
   }
   
   .field button:disabled {
-    cursor: not-allowed;
+    /* cursor: not-allowed; */
   }
   
   /* SETTINGS and USERPROFILE */
@@ -555,7 +555,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 60%;
     margin: 36px auto;
     padding: 16px;

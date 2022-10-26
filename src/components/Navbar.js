@@ -64,6 +64,11 @@ class Navbar extends React.Component {
 
             <div className="nav-links">
               <ul>
+                {auth.isLoggedin && (
+                  <li>
+                    <Link to="/upload">Upload</Link>
+                  </li>
+                )}
                 {!auth.isLoggedin && (
                   <li>
                     <Link to="/login">Log In</Link>

@@ -16,3 +16,7 @@ export const CLEAR_AUTH_STATE = 'CLEAR_AUTH_STATE';
 
 export const EDIT_USER_SUCCESSFULL = 'EDIT_USER_SUCCESSFULL';
 export const EDIT_USER_FAILED = 'EDIT_USER_FAILED';
+
+//file upload
+export const UPLOAD_FILE = 'UPLOAD_FILE';
+export const DOC_ADDED = 'DOC_ADDED';
