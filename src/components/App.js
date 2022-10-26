@@ -1,3 +1,4 @@
+import { onAuthStateChanged } from 'firebase/auth';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -6,7 +7,18 @@ import {
   Routes,
   useNavigate,
 } from 'react-router-dom';
-import { Navbar, Home, Login, Signup, Settings, Page404 } from './index';
+import { authenticateUser } from '../actions/auth';
+import { auth } from '../firebase';
+import {
+  Navbar,
+  Home,
+  Login,
+  Signup,
+  Settings,
+  Page404,
+  Resources,
+  Upload
+} from './index';
 
 const PrivateRoute = ({ isLoggedin, children }) => {
   const navigate = useNavigate();
@@ -15,29 +27,40 @@ const PrivateRoute = ({ isLoggedin, children }) => {
 };
 
 class App extends Component {
-
+  componentDidMount() {
+    
+  }
   render() {
-    const { auth } = this.props;
+    const { auth, subjects } = this.props;
     return (
       <Router>
-          <div>
-            <Navbar />
-            <Routes>
-              <Route path="/" element={<Home/>} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route
-                path="/settings"
-                element={
-                  <PrivateRoute isLoggedin={auth.isLoggedin}>
-                    <Settings />
-                  </PrivateRoute>
-                }
-              />
-              <Route path="*" element={<Page404 />} />
-            </Routes>
-          </div>
-        </Router>
+        <div>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            {subjects.map((subject) => {
+              return (
+                <Route
+                  path={subject.subject_name}
+                  element={<Resources resources={subject.resources} />}
+                />
+              );
+            })}
+            <Route path='/upload' element={ <Upload/>} />
+            <Route
+              path="/settings"
+              element={
+                <PrivateRoute isLoggedin={auth.isLoggedin}>
+                  <Settings />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </div>
+      </Router>
     );
   }
 }
@@ -46,6 +69,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
+    subjects: state.subjects,
   };
 }
 

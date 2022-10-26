@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap');
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -525,4 +526,53 @@ body {
   #add-post-btn:hover {
     cursor: pointer;
   }
-  
+
+
+  /* SUBJECTS AND SUBJECT ITEM */
+  .subjects{
+    margin-top: 30px;
+  }
+  .subject-item-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 6px auto;
+    padding: 12px;
+    width: 60%;
+    border-radius: 10px;
+    gap: 10px;
+    font-family: 'Mulish', sans-serif;
+  }
+  .subject-name{
+    font-size: 20px;
+  }
+  .subject-instructor{
+    font-size: 12px;
+  }
+
+  /* RESOURCES AND RESOURCE ITEM */
+  .resources{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    width: 60%;
+    margin: 36px auto;
+    padding: 16px;
+    gap: 10px;
+    border-radius: 10px;
+  }
+  .resource-item{
+    border: 1px solid blue;
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .resource-item a{
+    text-decoration: none;
+    color: black;
+  }
+  .resource-item a:hover{
+    text-decoration: none;
+    color: #ef7917;
+  }

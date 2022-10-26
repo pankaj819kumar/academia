@@ -1,16 +1,18 @@
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase/index';
 export function getFormBody(params) {
-    let formBody = []  //  [username=pankaj, password=123]
+  let formBody = []; //  [username=pankaj, password=123]
 
-    for (let property in params) {
-        let encodedKey = encodeURIComponent(property);
-        let encodedValue = encodeURIComponent(params[property]);
+  for (let property in params) {
+    let encodedKey = encodeURIComponent(property);
+    let encodedValue = encodeURIComponent(params[property]);
 
-        formBody.push(encodedKey + '=' + encodedValue);
-    }
+    formBody.push(encodedKey + '=' + encodedValue);
+  }
 
-    return formBody.join('&');  // username=pankaj&password=123
+  return formBody.join('&'); // username=pankaj&password=123
 }
 
 export function getAuthTokenFromLocalStorage() {
-    return localStorage.getItem('token');
+  return localStorage.getItem('token');
 }

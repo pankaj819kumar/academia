@@ -12,7 +12,7 @@ import {
   EDIT_USER_FAILED,
 } from './actionTypes';
 // import { APIUrls } from '../helpers/urls';
-import { getAuthTokenFromLocalStorage, getFormBody } from '../helpers/utils';
+// import { getAuthTokenFromLocalStorage, getFormBody } from '../helpers/utils';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 

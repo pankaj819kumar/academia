@@ -8,5 +8,8 @@ import Signup from './Signup';
 import App from './App';
 import Subjects from './Subjects';
 import SubjectItem from './SubjectItem';
+import Resources from './Resources';
+import ResourceItem from './ResourceItem';
+import Upload from './Upload';
 
-export { Navbar, Post, Home, Settings, Page404, Login, Signup, App, Subjects, SubjectItem};
+export { Navbar, Post, Home, Settings, Page404, Login, Signup, App, Subjects, SubjectItem, Resources, ResourceItem, Upload};

@@ -1,4 +1,4 @@
-export const UPDATE_POSTS = 'UPDATE_POSTS';
+export const UPDATE_SUBJECTS = 'UPDATE_SUBJECTS';
 
 // login action types
 export const LOGIN_START = 'LOGIN_START';
