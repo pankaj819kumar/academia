@@ -14,7 +14,12 @@ import {
 // import { APIUrls } from '../helpers/urls';
 // import { getAuthTokenFromLocalStorage, getFormBody } from '../helpers/utils';
 import { auth } from '../firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from 'firebase/auth';
 
 export function startLogin() {
   return {
@@ -69,7 +74,12 @@ export function login(email, password) {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('error in login action. code: ', errorCode, 'error message: ', errorMessage);
+        console.log(
+          'error in login action. code: ',
+          errorCode,
+          'error message: ',
+          errorMessage
+        );
         dispatch(loginFailed(errorMessage));
       });
   };
@@ -84,15 +94,17 @@ export function authenticateUser(user) {
 
 export function logout() {
   return (dispatch) => {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-      console.log('logout successful');
-      dispatch(logoutUser());
-    }).catch((error) => {
-      // An error happened.
-      console.log('error in logout action', error);
-    });
-  }
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        console.log('logout successful');
+        dispatch(logoutUser());
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log('error in logout action', error);
+      });
+  };
 }
 
 export function logoutUser() {
@@ -137,13 +149,15 @@ export function signup(email, password, confirmPassword, name) {
         // setting name
         updateProfile(auth.currentUser, {
           displayName: name,
-        }).then(() => {
-          // Profile updated!
-          // ...
-        }).catch((error) => {
-          // An error occurred
-          console.log('error in setting displayName', error);
-        });
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            console.log('error in setting displayName', error);
+          });
         const user = userCredential.user;
         console.log('user in sign up action', user);
         dispatch(signupSuccessful(user));
@@ -152,7 +166,12 @@ export function signup(email, password, confirmPassword, name) {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log('error in signup action. code: ', errorCode, 'error message: ', errorMessage);
+        console.log(
+          'error in signup action. code: ',
+          errorCode,
+          'error message: ',
+          errorMessage
+        );
         dispatch(signupFailed(errorMessage));
         // ..
       });

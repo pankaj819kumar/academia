@@ -1,7 +1,10 @@
+import { onAuthStateChanged } from 'firebase/auth';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import { authenticateUser } from '../actions/auth';
 import { fetchSubjects } from '../actions/subjects';
+import { auth } from '../firebase';
 import { Subjects } from './index';
 
 class Home extends Component {

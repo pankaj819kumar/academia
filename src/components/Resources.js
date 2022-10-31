@@ -5,7 +5,7 @@ import { ResourceItem } from './';
 class Resources extends Component {
     render() {
         const { resources } = this.props;
-        console.log('props in Resources Comp', this.props);
+        // console.log('props in Resources Comp', this.props);
         return (
             <div className='resources'>
                 {resources.map((resource) => {

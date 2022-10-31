@@ -1,4 +1,4 @@
-import { onAuthStateChanged } from 'firebase/auth';
+// import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase/index';
 export function getFormBody(params) {
   let formBody = []; //  [username=pankaj, password=123]
@@ -14,5 +14,5 @@ export function getFormBody(params) {
 }
 
 export function getAuthTokenFromLocalStorage() {
-  return localStorage.getItem('token');
+  return localStorage.getItem('firebase:authUser:AIzaSyBME_duwiAFeCqxIZ2iYU6nNv46897hfR8:[DEFAULT]');
 }

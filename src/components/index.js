@@ -1,5 +1,4 @@
 import Navbar from './Navbar';
-import Post from './Post';
 import Home from './Home';
 import Settings from './Settings';
 import Page404 from './Page404';
@@ -12,4 +11,4 @@ import Resources from './Resources';
 import ResourceItem from './ResourceItem';
 import Upload from './Upload';
 
-export { Navbar, Post, Home, Settings, Page404, Login, Signup, App, Subjects, SubjectItem, Resources, ResourceItem, Upload};
+export { Navbar, Home, Settings, Page404, Login, Signup, App, Subjects, SubjectItem, Resources, ResourceItem, Upload};

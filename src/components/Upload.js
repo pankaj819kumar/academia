@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { uploadFile } from '../actions/upload';
+
+
 
 class Upload extends Component {
   constructor(props) {
@@ -27,12 +29,18 @@ class Upload extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     const { name, subjectName, teacher, file } = this.state;
-    console.log('file to upload', file);
+    // console.log('file to upload', file);
     if (name && file && subjectName && teacher) {
       this.props.dispatch(uploadFile(name, subjectName, teacher, file));
     }
+    // this.props.navigate("/upload", { replace: true });
   };
   render() {
+    const { auth } = this.props;
+    console.log('props in withRouter', this.props);
+    if (!auth.isLoggedin) {
+      return <Navigate to="/login" replace />;
+    }
     return (
       <form className="login-form">
         <span className="login-signup-header"> Upload File</span>
@@ -78,6 +86,20 @@ class Upload extends Component {
   }
 }
 
-const mapStateToProps = () => ({});
+// const withRouter = (WrappedComponent) => (props) => {
+//   const navigate = useNavigate();
+
+//   return (
+//     <WrappedComponent
+//       {...props}
+//       navigate={navigate}
+//     />
+//   );
+// };
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
 
 export default connect(mapStateToProps)(Upload);
+// export default withRouter(connect(mapStateToProps)(Upload));

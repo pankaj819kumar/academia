@@ -5,6 +5,7 @@ import { logout } from '../actions/auth';
 
 class Navbar extends React.Component {
   logOut = () => {
+    localStorage.removeItem('firebase:authUser:AIzaSyBME_duwiAFeCqxIZ2iYU6nNv46897hfR8:[DEFAULT]');
     this.props.dispatch(logout());
   };
 
@@ -22,32 +23,34 @@ class Navbar extends React.Component {
               /> */}
             </Link>
           </div>
-          <div className="search-container">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/149/149852.png"
-              alt="search-icon"
-              className="search-icon"
-            />
-            <input placeholder="Search" />
-            <div className="search-results">
-              <ul>
-                <li className="search-results-row">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/456/456212.png"
-                    alt="user-dp"
-                  />
-                  <span>Pankaj Kumar</span>
-                </li>
-                <li className="search-results-row">
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/456/456212.png"
-                    alt="user-dp"
-                  />
-                  <span>Pankaj Kumar</span>
-                </li>
-              </ul>
+          {auth.isLoggedin && (
+            <div className="search-container">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/149/149852.png"
+                alt="search-icon"
+                className="search-icon"
+              />
+              <input placeholder="Search" />
+              <div className="search-results">
+                <ul>
+                  <li className="search-results-row">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/456/456212.png"
+                      alt="user-dp"
+                    />
+                    <span>Pankaj Kumar</span>
+                  </li>
+                  <li className="search-results-row">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/456/456212.png"
+                      alt="user-dp"
+                    />
+                    <span>Pankaj Kumar</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
           <div className="right-nav">
             {auth.isLoggedin && (
               <div className="user">
@@ -71,11 +74,11 @@ class Navbar extends React.Component {
                 )}
                 {!auth.isLoggedin && (
                   <li>
-                    <Link to="/login">Log In</Link>
+                    <Link to="/login">Login</Link>
                   </li>
                 )}
 
-                {auth.isLoggedin && <li onClick={this.logOut}>Log out</li>}
+                {auth.isLoggedin && <li onClick={this.logOut}>Logout</li>}
                 {!auth.isLoggedin && (
                   <li>
                     <Link to="/signup">Register</Link>
