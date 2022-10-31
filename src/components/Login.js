@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Navigate, useLocation } from 'react-router-dom';
-import { authenticateUser, clearAuthState, login } from '../actions/auth';
-
+import { Navigate } from 'react-router-dom';
+import { clearAuthState, login } from '../actions/auth';
 
 class Login extends Component {
   constructor(props) {
@@ -18,7 +17,7 @@ class Login extends Component {
   componentWillUnmount() {
     this.props.dispatch(clearAuthState());
   }
-  
+
   handleFormSubmit = (e) => {
     e.preventDefault();
     // log email and password ref
@@ -44,7 +43,7 @@ class Login extends Component {
   render() {
     const { error, inProgress, isLoggedin } = this.props.auth;
     if (isLoggedin) {
-      return <Navigate to='/' replace/>
+      return <Navigate to="/" replace />;
     }
     return (
       <form className="login-form">
@@ -76,7 +75,9 @@ class Login extends Component {
               Logging In...
             </button>
           ) : (
-            <button onClick={this.handleFormSubmit} disabled={inProgress}>Log In</button>
+            <button onClick={this.handleFormSubmit} disabled={inProgress}>
+              Log In
+            </button>
           )}
         </div>
       </form>

@@ -1,18 +1,12 @@
-// import { onAuthStateChanged } from 'firebase/auth';
-import { onAuthStateChanged } from 'firebase/auth';
-import jwtDecode from 'jwt-decode';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
-  Navigate,
   Route,
   Routes,
   useNavigate,
 } from 'react-router-dom';
 import { authenticateUser } from '../actions/auth';
-import { auth } from '../firebase';
-// import { auth } from '../firebase';
 import { getAuthTokenFromLocalStorage } from '../helpers/utils';
 import {
   Navbar,

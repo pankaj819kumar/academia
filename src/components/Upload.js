@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { uploadFile } from '../actions/upload';
-
-
+import { uploadFile } from '../firebase/upload';
 
 class Upload extends Component {
   constructor(props) {
@@ -31,13 +29,14 @@ class Upload extends Component {
     const { name, subjectName, teacher, file } = this.state;
     // console.log('file to upload', file);
     if (name && file && subjectName && teacher) {
-      this.props.dispatch(uploadFile(name, subjectName, teacher, file));
+      // this.props.dispatch(uploadFile(name, subjectName, teacher, file));
+      uploadFile(name, subjectName, teacher, file);
+      this.props.navigate("/", { replace: true });
     }
-    // this.props.navigate("/upload", { replace: true });
   };
   render() {
     const { auth } = this.props;
-    console.log('props in withRouter', this.props);
+    // console.log('props in withRouter', this.props);
     if (!auth.isLoggedin) {
       return <Navigate to="/login" replace />;
     }
@@ -86,20 +85,15 @@ class Upload extends Component {
   }
 }
 
-// const withRouter = (WrappedComponent) => (props) => {
-//   const navigate = useNavigate();
+const withRouter = (WrappedComponent) => (props) => {
+  const navigate = useNavigate();
 
-//   return (
-//     <WrappedComponent
-//       {...props}
-//       navigate={navigate}
-//     />
-//   );
-// };
+  return <WrappedComponent {...props} navigate={navigate} />;
+};
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps)(Upload);
-// export default withRouter(connect(mapStateToProps)(Upload));
+// export default connect(mapStateToProps)(Upload);
+export default withRouter(connect(mapStateToProps)(Upload));

@@ -1,5 +1,3 @@
-// import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase/index';
 export function getFormBody(params) {
   let formBody = []; //  [username=pankaj, password=123]
 
