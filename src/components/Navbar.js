@@ -23,7 +23,7 @@ class Navbar extends React.Component {
               /> */}
             </Link>
           </div>
-          {auth.isLoggedin && (
+          {/* {auth.isLoggedin && (
             <div className="search-container">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/149/149852.png"
@@ -50,18 +50,18 @@ class Navbar extends React.Component {
                 </ul>
               </div>
             </div>
-          )}
+          )} */}
           <div className="right-nav">
             {auth.isLoggedin && (
               <div className="user">
-                <Link to="/settings">
-                  <img
+                <Link to="/settings" style={{ textDecoration: 'none', color: 'white' }}>
+                  {/* <img
                     src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
                     alt="user-dp"
                     id="user-dp"
-                  />
-                </Link>
+                  /> */}
                 <span>{auth.user.displayName}</span>
+                </Link>
               </div>
             )}
 

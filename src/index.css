@@ -230,6 +230,7 @@ body {
   nav .nav-links ul {
     display: flex;
     list-style-type: none;
+    gap: 10px;
   }
   nav .nav-links ul li {
     padding: 0 4px;
