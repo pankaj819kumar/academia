@@ -8,7 +8,7 @@ class SubjectItem extends Component {
     return (
       <div className="subject-item">
         <Link
-          to={subject.subject_name}
+          to={encodeURIComponent(subject.subject_name)}
           style={{ textDecoration: 'none', color: 'black' }}
         >
           <div className="subject-item-container">

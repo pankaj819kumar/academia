@@ -53,7 +53,7 @@ class App extends Component {
             {subjects.map((subject) => {
               return (
                 <Route
-                  path={subject.subject_name}
+                  path={encodeURIComponent(subject.subject_name)}
                   element={<Resources resources={subject.resources} />}
                 />
               );
