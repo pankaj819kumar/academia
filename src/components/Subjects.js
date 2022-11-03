@@ -9,7 +9,7 @@ class Subjects extends Component {
     return (
       <div className="subjects">
         {subjects.map((subject) => (
-          <SubjectItem subject={subject} />
+          <SubjectItem subject={subject} key={ ""} />
         ))}
       </div>
     );
