@@ -16,6 +16,9 @@ export function fetchSubjects() {
     }, (error) => {
       console.log('error in database listener', error);
     });
+    if (false) {
+      unsubscribe();
+    }
   };
 }
 
