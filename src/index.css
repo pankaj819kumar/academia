@@ -734,3 +734,28 @@ nav .nav-links ul li:hover {
   margin-left: 4px;
   font-style: italic;
 }
+
+/* for small screens */
+@media (max-width: 768px) {
+  .subjects {
+    width: 80%;
+  }
+  .resources {
+    width: 80%;
+  }
+  .login-form {
+    width: 80%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .subjects {
+    width: 75%;
+  }
+  .resources {
+    width: 75%;
+  }
+  .login-form {
+    width: 60%;
+  }
+}
