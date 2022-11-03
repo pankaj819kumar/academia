@@ -11,6 +11,7 @@ class Upload extends Component {
       subjectName: '',
       teacher: '',
       file: null,
+      link: '',
     };
   }
 
@@ -26,11 +27,15 @@ class Upload extends Component {
 
   onFormSubmit = (e) => {
     e.preventDefault();
-    const { name, subjectName, teacher, file } = this.state;
+    const { name, subjectName, teacher, file, link } = this.state;
     // console.log('file to upload', file);
     if (name && file && subjectName && teacher) {
       // this.props.dispatch(uploadFile(name, subjectName, teacher, file));
       uploadFile(name, subjectName, teacher, file);
+      this.props.navigate("/", { replace: true });
+    }
+    else if (name && link && subjectName && teacher) {
+      
       this.props.navigate("/", { replace: true });
     }
   };
@@ -75,6 +80,14 @@ class Upload extends Component {
             type="file"
             required
             onChange={(e) => this.handleInputChange('file', e.target.files[0])}
+          />
+        </div>
+        <span>or</span>
+        <div className="field">
+          <input
+            placeholder="link"
+            type="text"
+            onChange={(e) => this.handleInputChange('link', e.target.value)}
           />
         </div>
         <div className="field">

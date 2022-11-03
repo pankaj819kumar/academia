@@ -22,7 +22,6 @@ const newSubjectRef = doc(collection(db, 'subjects'));
 
 export async function uploadFile(name, subjectName, teacher, file) {
   const user = auth.currentUser;
-  const uid = user.uid; // currently signed in user uid
   const storage = getStorage(app);
   const storageRef = ref(storage, `academia/${name}`);
 
@@ -36,18 +35,17 @@ export async function uploadFile(name, subjectName, teacher, file) {
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, file).then((snapshot) => {
     console.log('Uploaded file!', file);
-    // console.log('file snapshot', snapshot);
 
     getDownloadURL(storageRef)
       .then((url) => {
-        // console.log('download url', url);
         getMetadata(storageRef)
           .then((metadata) => {
             const resource = {
               name: name,
               link: url,
-              creator: uid,
+              creator: user.uid,
               contentType: metadata.contentType,
+              creator_name: user.displayName,
             };
             if (subjectDocRef) {
               updateDocHelper(subjectDocRef, resource);

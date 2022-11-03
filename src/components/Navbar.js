@@ -54,14 +54,14 @@ class Navbar extends React.Component {
           <div className="right-nav">
             {auth.isLoggedin && (
               <div className="user">
-                <Link to="/settings" style={{ textDecoration: 'none', color: 'white' }}>
+                {/* <Link to="/settings" style={{ textDecoration: 'none', color: 'white' }}> */}
                   {/* <img
                     src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
                     alt="user-dp"
                     id="user-dp"
                   /> */}
                 <span>{auth.user.displayName}</span>
-                </Link>
+                {/* </Link> */}
               </div>
             )}
 

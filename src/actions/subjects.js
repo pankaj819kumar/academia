@@ -1,18 +1,21 @@
-import { UPDATE_SUBJECTS } from "./actionTypes";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
+import { UPDATE_SUBJECTS } from './actionTypes';
+import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
+import { db } from '../firebase';
 
 export function fetchSubjects() {
-    return async function (dispatch) {
-        const querySnapshot = await getDocs(collection(db, "subjects"));
-        const data = [];
-        querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-            // console.log(doc.id, " => ", doc.data());
-            data.push(doc.data());
-        });
-        dispatch(updateSubjects(data));
-        // console.log(querySnapshot);
+  return async function (dispatch) {
+    // const querySnapshot = await getDocs(collection(db, "subjects"));
+    const q = query(collection(db, "subjects"), orderBy("subject_name"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const data = [];
+      snapshot.forEach((doc) => {
+        data.push(doc.data());
+      });
+      // console.log('snapshot', snapshot);
+      dispatch(updateSubjects(data));
+    }, (error) => {
+      console.log('error in database listener', error);
+    });
   };
 }
 
