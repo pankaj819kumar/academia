@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { uploadFile } from '../firebase/upload';
+import { addLink, uploadFile } from '../firebase/upload';
 
 class Upload extends Component {
   constructor(props) {
@@ -32,12 +32,12 @@ class Upload extends Component {
     if (name && file && subjectName && teacher) {
       // this.props.dispatch(uploadFile(name, subjectName, teacher, file));
       uploadFile(name, subjectName, teacher, file);
-      this.props.navigate("/", { replace: true });
     }
     else if (name && link && subjectName && teacher) {
-      
-      this.props.navigate("/", { replace: true });
+      console.log('for add link');
+      addLink(name, subjectName, teacher, link);
     }
+    this.props.navigate("/", { replace: true });
   };
   render() {
     const { auth } = this.props;
@@ -78,7 +78,6 @@ class Upload extends Component {
           <input
             placeholder="file"
             type="file"
-            required
             onChange={(e) => this.handleInputChange('file', e.target.files[0])}
           />
         </div>

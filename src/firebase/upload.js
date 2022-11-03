@@ -22,9 +22,9 @@ const newSubjectRef = doc(collection(db, 'subjects'));
 
 export async function uploadFile(name, subjectName, teacher, file) {
   const user = auth.currentUser;
+  const uid = user.uid;
   const storage = getStorage(app);
   const storageRef = ref(storage, `academia/${name}`);
-
   // writing query to check existing subject doc
   const q = query(
     collection(db, 'subjects'),
@@ -35,7 +35,6 @@ export async function uploadFile(name, subjectName, teacher, file) {
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, file).then((snapshot) => {
     console.log('Uploaded file!', file);
-
     getDownloadURL(storageRef)
       .then((url) => {
         getMetadata(storageRef)
@@ -43,7 +42,7 @@ export async function uploadFile(name, subjectName, teacher, file) {
             const resource = {
               name: name,
               link: url,
-              creator: user.uid,
+              creator: uid,
               contentType: metadata.contentType,
               creator_name: user.displayName,
             };
@@ -72,6 +71,38 @@ export async function uploadFile(name, subjectName, teacher, file) {
         console.log('error in get download link:', error);
       });
   });
+}
+
+export async function addLink(name, subjectName, teacher, link) {
+  const user = auth.currentUser;
+  const uid = user.uid;
+  // writing query to check existing subject doc
+  const q = query(
+    collection(db, 'subjects'),
+    where('subject_name', '==', subjectName)
+  );
+  // if found will get doc ref
+  const subjectDocRef = await checkExistingSubjectDoc(q);
+  const resource = {
+    name: name,
+    link: link,
+    creator: uid,
+    contentType: 'text/uri-list',
+    creator_name: user.displayName,
+  };
+  if (subjectDocRef) {
+    updateDocHelper(subjectDocRef, resource);
+    console.log('resource added successfully in existing doc');
+  } else {
+    // defining doc
+    const data = {
+      instructor: teacher,
+      resources: [resource],
+      subject_name: subjectName,
+      time: serverTimestamp(),
+    };
+    addNewDoc(data);
+  }
 }
 
 async function addNewDoc(data) {

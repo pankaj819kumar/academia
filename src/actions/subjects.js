@@ -1,5 +1,5 @@
 import { UPDATE_SUBJECTS } from './actionTypes';
-import { collection, onSnapshot, orderBy, query, where } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export function fetchSubjects() {
