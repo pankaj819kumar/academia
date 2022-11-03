@@ -5,7 +5,9 @@ import { logout } from '../actions/auth';
 
 class Navbar extends React.Component {
   logOut = () => {
-    localStorage.removeItem('firebase:authUser:AIzaSyBME_duwiAFeCqxIZ2iYU6nNv46897hfR8:[DEFAULT]');
+    localStorage.removeItem(
+      'firebase:authUser:AIzaSyBME_duwiAFeCqxIZ2iYU6nNv46897hfR8:[DEFAULT]'
+    );
     this.props.dispatch(logout());
   };
 
@@ -17,10 +19,7 @@ class Navbar extends React.Component {
         <nav className="nav">
           <div className="left-div">
             <Link to="/">
-              {/* <img
-                src="https://ninjasfiles.s3.amazonaws.com/0000000000003454.png"
-                alt="logo"
-              /> */}
+              <img src="https://i.imgur.com/M9nv39z.png" alt="logo" />
             </Link>
           </div>
           {/* {auth.isLoggedin && (
@@ -55,7 +54,7 @@ class Navbar extends React.Component {
             {auth.isLoggedin && (
               <div className="user">
                 {/* <Link to="/settings" style={{ textDecoration: 'none', color: 'white' }}> */}
-                  {/* <img
+                {/* <img
                     src="https://cdn-icons-png.flaticon.com/512/747/747376.png"
                     alt="user-dp"
                     id="user-dp"
@@ -69,19 +68,23 @@ class Navbar extends React.Component {
               <ul>
                 {auth.isLoggedin && (
                   <li>
-                    <Link to="/upload">Upload</Link>
+                    <Link to="/upload">upload</Link>
                   </li>
                 )}
                 {!auth.isLoggedin && (
                   <li>
-                    <Link to="/login">Login</Link>
+                    <Link to="/login">login</Link>
                   </li>
                 )}
 
-                {auth.isLoggedin && <li onClick={this.logOut}>Logout</li>}
+                {auth.isLoggedin && (
+                  <li onClick={this.logOut}>
+                    <Link to="/">logout</Link>
+                  </li>
+                )}
                 {!auth.isLoggedin && (
                   <li>
-                    <Link to="/signup">Register</Link>
+                    <Link to="/signup">register</Link>
                   </li>
                 )}
               </ul>

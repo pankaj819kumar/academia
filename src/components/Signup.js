@@ -42,7 +42,7 @@ class Signup extends Component {
     }
     return (
       <form className="login-form">
-        <span className="login-signup-header"> Signup</span>
+        <span className="login-signup-header"> sign up</span>
         {error && <div className="alert error-dailog">{error}</div>}
         <div className="field">
           <input
@@ -80,7 +80,7 @@ class Signup extends Component {
         </div>
         <div className="field">
           <button onClick={this.onFormSubmit} disabled={inProgress}>
-            Signup
+            sign up
           </button>
         </div>
       </form>

@@ -28,20 +28,16 @@ class Upload extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     const { name, subjectName, teacher, file, link } = this.state;
-    // console.log('file to upload', file);
     if (name && file && subjectName && teacher) {
-      // this.props.dispatch(uploadFile(name, subjectName, teacher, file));
       uploadFile(name, subjectName, teacher, file);
     }
     else if (name && link && subjectName && teacher) {
-      console.log('for add link');
       addLink(name, subjectName, teacher, link);
     }
     this.props.navigate("/", { replace: true });
   };
   render() {
     const { auth } = this.props;
-    // console.log('props in withRouter', this.props);
     if (!auth.isLoggedin) {
       return <Navigate to="/login" replace />;
     }
@@ -78,6 +74,7 @@ class Upload extends Component {
           <input
             placeholder="file"
             type="file"
+            id='file-upload'
             onChange={(e) => this.handleInputChange('file', e.target.files[0])}
           />
         </div>
@@ -107,5 +104,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-// export default connect(mapStateToProps)(Upload);
 export default withRouter(connect(mapStateToProps)(Upload));

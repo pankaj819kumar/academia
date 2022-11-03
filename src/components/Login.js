@@ -47,7 +47,7 @@ class Login extends Component {
     }
     return (
       <form className="login-form">
-        <span className="login-signup-header">log In</span>
+        <span className="login-signup-header">login</span>
         {error && <div className="alert error-dailog">{error}</div>}
         <div className="field">
           <input
@@ -72,11 +72,11 @@ class Login extends Component {
         <div className="field">
           {inProgress ? (
             <button onClick={this.handleFormSubmit} disabled={inProgress}>
-              Logging In...
+              logging in...
             </button>
           ) : (
             <button onClick={this.handleFormSubmit} disabled={inProgress}>
-              Log In
+              login
             </button>
           )}
         </div>
