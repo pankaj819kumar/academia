@@ -52,7 +52,7 @@ class Login extends Component {
         <div className="field">
           <input
             type="email"
-            placeholder="Email"
+            placeholder="email"
             required
             // ref={this.emailInputRef}
             onChange={this.handleEmailChange}
@@ -62,7 +62,7 @@ class Login extends Component {
         <div className="field">
           <input
             type="password"
-            placeholder="Password"
+            placeholder="password"
             required
             // ref={this.passwordInputRef}
             onChange={this.handlePasswordChange}

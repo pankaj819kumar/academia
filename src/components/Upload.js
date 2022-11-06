@@ -44,7 +44,7 @@ class Upload extends Component {
     }
     return (
       <form className="login-form">
-        <span className="login-signup-header"> Upload File</span>
+        <span className="login-signup-header"> upload file</span>
         <div className="field">
           <input
             placeholder="name"
@@ -88,7 +88,7 @@ class Upload extends Component {
           />
         </div>
         <div className="field">
-          <button onClick={this.onFormSubmit}>Upload</button>
+          <button onClick={this.onFormSubmit}>upload</button>
         </div>
       </form>
     );

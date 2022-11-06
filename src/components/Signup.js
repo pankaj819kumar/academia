@@ -46,7 +46,7 @@ class Signup extends Component {
         {error && <div className="alert error-dailog">{error}</div>}
         <div className="field">
           <input
-            placeholder="Name"
+            placeholder="name"
             type="text"
             required
             onChange={(e) => this.handleInputChange('name', e.target.value)}
@@ -54,7 +54,7 @@ class Signup extends Component {
         </div>
         <div className="field">
           <input
-            placeholder="Email"
+            placeholder="email"
             type="email"
             required
             onChange={(e) => this.handleInputChange('email', e.target.value)}
@@ -62,7 +62,7 @@ class Signup extends Component {
         </div>
         <div className="field">
           <input
-            placeholder="Password"
+            placeholder="password"
             type="password"
             required
             onChange={(e) => this.handleInputChange('password', e.target.value)}
@@ -70,7 +70,7 @@ class Signup extends Component {
         </div>
         <div className="field">
           <input
-            placeholder="Confirm password"
+            placeholder="confirm password"
             type="password"
             required
             onChange={(e) =>
