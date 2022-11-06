@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { browserLocalPersistence, getAuth, setPersistence } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -12,13 +13,14 @@ const firebaseConfig = {
   projectId: "academia-90de9",
   storageBucket: "academia-90de9.appspot.com",
   messagingSenderId: "3944865273",
-  appId: "1:3944865273:web:6e87e417996953107f3128"
+  appId: "1:3944865273:web:6e87e417996953107f3128",
+  measurementId: "G-ZS0HL20LK1"
 };
-
 
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 // console.log('auth in firebase',auth);
 export const db = getFirestore(app);
