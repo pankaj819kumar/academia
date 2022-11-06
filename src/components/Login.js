@@ -21,7 +21,7 @@ class Login extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     // log email and password ref
-    console.log('this.state', this.state);
+    // console.log('this.state', this.state);
     const { email, password } = this.state;
 
     if (email && password) {

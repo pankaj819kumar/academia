@@ -67,7 +67,7 @@ export function login(email, password) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log('user in login action', user);
+        // console.log('user in login action', user);
         dispatch(loginSuccess(user));
         // ...
       })
@@ -97,7 +97,7 @@ export function logout() {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        console.log('logout successful');
+        // console.log('logout successful');
         dispatch(logoutUser());
       })
       .catch((error) => {
@@ -159,7 +159,7 @@ export function signup(email, password, confirmPassword, name) {
             console.log('error in setting displayName', error);
           });
         const user = userCredential.user;
-        console.log('user in sign up action', user);
+        // console.log('user in sign up action', user);
         dispatch(signupSuccessful(user));
         // ...
       })

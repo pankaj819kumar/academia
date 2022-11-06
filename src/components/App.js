@@ -21,7 +21,7 @@ import {
 
 const PrivateRoute = ({ isLoggedin, children }) => {
   const navigate = useNavigate();
-  console.log('login status', isLoggedin);
+  // console.log('login status', isLoggedin);
   return isLoggedin ? children : navigate('/login');
 };
 
@@ -30,7 +30,7 @@ class App extends Component {
     const token = getAuthTokenFromLocalStorage();
     if (token) {
       const user = JSON.parse(token);
-      console.log('user after parsing local storage token: ', user);
+      // console.log('user after parsing local storage token: ', user);
       this.props.dispatch(
         authenticateUser({
           email: user.email,

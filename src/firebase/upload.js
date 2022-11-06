@@ -34,7 +34,7 @@ export async function uploadFile(name, subjectName, teacher, file) {
   const subjectDocRef = await checkExistingSubjectDoc(q);
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, file).then((snapshot) => {
-    console.log('Uploaded file!', file);
+    // console.log('Uploaded file!', file);
     getDownloadURL(storageRef)
       .then((url) => {
         getMetadata(storageRef)
@@ -68,7 +68,7 @@ export async function uploadFile(name, subjectName, teacher, file) {
           });
       })
       .catch((error) => {
-        console.log('error in get download link:', error);
+        console.log('error in getting file link:', error);
       });
   });
 }
