@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from './store';
 
 const store = configureStore();
-console.log('store', store.getState());
+// console.log('store', store.getState());
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
