@@ -28,7 +28,7 @@ class Upload extends Component {
   onFormSubmit = (e) => {
     e.preventDefault();
     let { name, subjectName, teacher, file, link } = this.state;
-    subjectName = subjectName.trim();
+    subjectName = subjectName.trim().toLowerCase();
     if (name && file && subjectName && teacher) {
       uploadFile(name, subjectName, teacher, file);
     }
