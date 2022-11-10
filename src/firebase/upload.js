@@ -24,7 +24,9 @@ export async function uploadFile(name, subjectName, teacher, file) {
   const user = auth.currentUser;
   const uid = user.uid;
   const storage = getStorage(app);
-  const storageRef = ref(storage, `academia/${name}`);
+  // console.log('file', file);
+  // const storageRef = ref(storage, `academia/${name}`);
+  const storageRef = ref(storage, `academia/${name}.${file.name.slice((file.name.lastIndexOf(".") - 1 >>> 0) + 2)}`);
   // writing query to check existing subject doc
   const q = query(
     collection(db, 'subjects'),
